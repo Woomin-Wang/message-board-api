@@ -1,5 +1,6 @@
 package io.github.woominwang.messageboard.service;
 
+import io.github.woominwang.messageboard.exception.PostNotFoundException;
 import io.github.woominwang.messageboard.domain.Post;
 import io.github.woominwang.messageboard.dto.PostDto;
 import io.github.woominwang.messageboard.repository.PostRepository;
@@ -43,7 +44,7 @@ public class PostService {
     public PostDto.Response getPostById(Long id) {
 
         Post post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("해당 ID의 게시글이 없습니다."));
+                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
 
         return new PostDto.Response(post);
     }
@@ -52,7 +53,7 @@ public class PostService {
     public PostDto.Response updatePost(Long id, PostDto.Request requestDto) {
 
         Post post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException(("해당 ID의 게시글이 없습니다.")));
+                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
 
         post.update(requestDto.getTitle(), requestDto.getContent());
 
@@ -63,7 +64,7 @@ public class PostService {
     public void deletePost(Long id) {
 
         Post post = postRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException(("해당 ID의 게시글이 없습니다.")));
+                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
 
         postRepository.delete(post);
     }
