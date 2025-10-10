@@ -2,7 +2,6 @@
 Spring Boot를 이용해 개발한 간단한 메시지 보드 REST API 서버입니다.
 
 <br>
-<br>
 
 ## Documentation
 프로젝트의 개발 과정을 기록하였습니다.
