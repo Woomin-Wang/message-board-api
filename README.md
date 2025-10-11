@@ -8,3 +8,4 @@ Spring Boot를 이용해 개발한 간단한 메시지 보드 REST API 서버입
 
 - [DTO & Builder Pattern](https://familiar-dragon-4ed.notion.site/DTO-Builder-Pattern-283bf88cd0f5802190abefb06e1338b4?source=copy_link)
 - [전역 예외 처리(Global Error Handling) 도입](https://familiar-dragon-4ed.notion.site/Global-Error-Handling-285bf88cd0f58053b7d7dbcfaccdbc59?source=copy_link)
+- [댓글(Comment) CRUD와 연관 관계 매핑](https://familiar-dragon-4ed.notion.site/Comment-CRUD-285bf88cd0f5804890d6e53c70320996?source=copy_link)
