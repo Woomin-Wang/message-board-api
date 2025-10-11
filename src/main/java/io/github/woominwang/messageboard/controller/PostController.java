@@ -2,8 +2,10 @@ package io.github.woominwang.messageboard.controller;
 
 import io.github.woominwang.messageboard.dto.PostDto;
 import io.github.woominwang.messageboard.service.PostService;
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

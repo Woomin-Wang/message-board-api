@@ -19,7 +19,6 @@ public class PostService {
 
     @Transactional
     public PostDto.Response createPost(PostDto.Request requestDto) {
-
         Post post = Post.builder()
                 .title(requestDto.getTitle())
                 .content(requestDto.getContent())
@@ -27,7 +26,6 @@ public class PostService {
                 .build();
 
         Post savedPost = postRepository.save(post);
-
         return new PostDto.Response(savedPost);
     }
 
@@ -42,31 +40,26 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public PostDto.Response getPostById(Long id) {
-
-        Post post = postRepository.findById(id).orElseThrow(
-                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
-
+        Post post = findPostById(id);
         return new PostDto.Response(post);
     }
 
     @Transactional
     public PostDto.Response updatePost(Long id, PostDto.Request requestDto) {
-
-        Post post = postRepository.findById(id).orElseThrow(
-                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
-
+        Post post = findPostById(id);
         post.update(requestDto.getTitle(), requestDto.getContent());
-
         return new PostDto.Response(post);
     }
 
     @Transactional
     public void deletePost(Long id) {
-
-        Post post = postRepository.findById(id).orElseThrow(
-                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
-
+        Post post = findPostById(id);
         postRepository.delete(post);
+    }
+
+    private Post findPostById(Long id) {
+        return postRepository.findById(id).orElseThrow(
+                () -> new PostNotFoundException(("ID " + id + "에 해당 하는 게시글이 없습니다.")));
     }
 }
 
